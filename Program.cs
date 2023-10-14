@@ -10,7 +10,7 @@ namespace calculator
             {
                 int num1 = 0;
                 int num2 = 0;
-                int result = 0;
+                double result = 0;
 
                 Console.WriteLine("Calculator Pragram");
               
@@ -56,7 +56,8 @@ namespace calculator
                         // now we should check num2 shoud not be zero to avoid division by zero
                         if (num2 != 0)
                         {
-                            result = num1 / num2;
+                            //for result to be in double even if num 1 and num2 in int
+                            result = (double)num1 / num2;
                             Console.WriteLine($"Your result: {num1} / {num2}= " + result);
                         }
                         else
@@ -71,7 +72,7 @@ namespace calculator
 
                 }
                 //Loop in case they would like to continue using calculator
-                Console.WriteLine("Would you like to continue (Y = yes, N = no");
+                Console.WriteLine("Would you like to continue (Y = yes, N = no)");
                 // If user will put capital letter
             } while (Console.ReadLine().ToUpper() == "Y");
 
