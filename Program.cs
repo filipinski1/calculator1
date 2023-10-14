@@ -8,18 +8,25 @@ namespace calculator
         {
             do
             {
-                double num1 = 0;
-                double num2 = 0;
-                double result = 0;
+                int num1 = 0;
+                int num2 = 0;
+                int result = 0;
 
                 Console.WriteLine("Calculator Pragram");
-                //user inputs always a string we need to convert that
+              
                 Console.Write("Enter number 1: ");
-                num1 = Convert.ToDouble(Console.ReadLine());
+                while (!int.TryParse(Console.ReadLine(), out num1))
+                {
+                    Console.WriteLine("Invalid input. Please enter an integer");
+                    Console.Write("Enter number 1: ");
+                }
 
                 Console.Write("Enter number 2: ");
-                num2 = Convert.ToDouble(Console.ReadLine());
-
+                while (!int.TryParse(Console.ReadLine(), out num2 ))
+                {
+                    Console.WriteLine("Invalid input. Please enter an integer.");
+                    Console.Write("Enter number 2:");
+                }
                 Console.WriteLine("Enter an option:");
                 Console.WriteLine("\t+ : Add");
                 Console.WriteLine("\t- : Subtrack");
@@ -46,8 +53,16 @@ namespace calculator
                         break;
 
                     case "/":
-                        result = num1 / num2;
-                        Console.WriteLine($"Your result: {num1} / {num2}= " + result);
+                        // now we should check num2 shoud not be zero to avoid division by zero
+                        if (num2 != 0)
+                        {
+                            result = num1 / num2;
+                            Console.WriteLine($"Your result: {num1} / {num2}= " + result);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Error: Division by zero is not allowed.");
+                        }
                         break;
                     default:
 
